@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Native Ecology and Roadside Diversity Society</title>
+  <title>Native Ecology and Roadside Diversity Society (NERDS)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #e4e1d8;
-      --dark: #333230;
+      --cream: #fdf6e8;
+      --sand: #e4e1d8;
+      --dark: #2b2a28;
       --green: #1f3322;
-      --gold: #a88a3a;
+      --gold: #c9a13f;
       --gold-light: #d9a441;
     }
     * { box-sizing: border-box; }
@@ -21,33 +22,54 @@
       font-family: "Jost", "Futura", "Century Gothic", sans-serif;
       background: var(--cream);
       color: var(--green);
+      line-height: 1.45;
     }
-    header {
-      background: var(--green);
-      color: var(--cream);
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 500;
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
-      letter-spacing: 0.02em;
-    }
-    main {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      min-height: calc(100vh - 8rem);
-    }
+    img { max-width: 100%; display: block; }
     h2 {
       font-weight: 500;
       font-size: clamp(1.5rem, 3vw, 2.1rem);
       margin: 0 0 2rem;
     }
-    .why { padding: 3rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Society banner */
+    .society {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Hero */
+    .hero { padding: 3.5rem 0; }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: 0 0 1.5rem;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.05;
+    }
+    .hero h3 { margin: 0 0 0.5rem; font-size: 1.3rem; font-weight: 600; }
+    .hero p { margin: 0; font-size: 1.15rem; max-width: 26rem; }
+    .hero figure {
+      margin: 0;
+      border-left: 10px solid var(--gold);
+      padding-left: 0;
+    }
+    .hero img { width: 100%; max-height: 520px; object-fit: cover; }
+
+    /* Why */
+    .why { background: var(--sand); padding: 3.5rem 0; }
     .benefits {
       list-style: none;
-      margin: 0;
+      margin: 0 0 3rem;
       padding: 0 0 1.25rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -63,14 +85,35 @@
       margin: 0 auto 0.75rem;
     }
     .benefits span { font-size: 1.05rem; }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    .fact {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .fact img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .fact img.square { border-radius: 0; }
+    .fact p { margin: 0; font-size: 1.1rem; }
+    .fact figcaption { font-weight: 600; margin-top: 0.4rem; text-align: center; }
+    .fact figure { margin: 0; }
     .quote {
       background: var(--dark);
       color: #fff;
-      margin: 2.5rem 0 0;
+      margin: 3rem 0 0;
       padding: 2rem 2.5rem;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       line-height: 1.4;
-      max-width: 34rem;
+      max-width: 40rem;
     }
     .quote::before {
       content: "\201D";
@@ -80,22 +123,26 @@
       line-height: 0.6;
       font-weight: 700;
     }
-    .corridor { font-weight: 500; font-size: 1.1rem; margin-top: 2rem; }
-    .actions {
-      background: var(--dark);
-      color: #fff;
-      padding: 3rem 2rem;
-    }
+
+    /* Actions */
+    .actions { background: var(--dark); color: #fff; padding: 3.5rem 0; }
     .actions ol {
       list-style: none;
       counter-reset: step;
       margin: 0;
       padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
     }
     .actions li {
       counter-increment: step;
-      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1.25rem;
+      align-items: center;
     }
+    .actions img { width: 130px; height: 130px; object-fit: cover; }
     .actions h3 {
       color: var(--gold-light);
       font-weight: 400;
@@ -103,22 +150,65 @@
       margin: 0 0 0.5rem;
     }
     .actions h3::before { content: counter(step) ". "; }
-    .actions p { margin: 0; line-height: 1.35; }
+    .actions p { margin: 0; }
+
+    /* History */
+    .history { padding: 3.5rem 0; }
+    .history .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .history .lead { font-size: 1.15rem; margin-top: -1rem; }
+    .history p { font-weight: 500; }
+
+    /* Join */
+    .join {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+    }
+    .join h2 { margin: 0 0 0.5rem; font-weight: 600; }
+    .join h2 + h2 {
+      display: inline-block;
+      padding-bottom: 0.6rem;
+      border-bottom: 6px solid var(--gold);
+      margin-bottom: 2rem;
+    }
+    .join a { color: #fff; font-size: 1.25rem; text-decoration: none; }
+    .join a:hover { color: var(--gold-light); }
+
     @media (max-width: 800px) {
-      main { grid-template-columns: 1fr; }
-      .why { padding: 2rem 1.25rem; }
+      .hero .wrap, .history .wrap, .facts, .actions ol { grid-template-columns: 1fr; }
       .benefits { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+      .fact { grid-template-columns: 120px 1fr; }
+      .fact img { width: 120px; height: 120px; }
+      .actions li { grid-template-columns: 100px 1fr; }
+      .actions img { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Native Ecology and Roadside Diversity Society</h1>
-  </header>
+  <div class="society">Native Ecology and Roadside Diversity Society (NERDS)</div>
 
-  <main>
-    <section class="why">
-      <h2>Why roadside vegetation matters. It can:</h2>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Remnant Roadside Vegetation</h1>
+        <h3>Bush Beyond the Bitumen</h3>
+        <p>Much of our biodiversity is found in roadside corridors, especially precious remnant vegetation.</p>
+      </div>
+      <figure>
+        <img src="images/roadside.jpg" alt="A gravel road winding through remnant eucalypt bushland beside a roadside sign">
+      </figure>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Why roadside vegetation matters</h2>
       <ul class="benefits">
         <li>
           <svg viewBox="0 0 72 64" aria-hidden="true">
@@ -128,7 +218,7 @@
             <rect x="30" y="34" width="4" height="26"/><rect x="50" y="36" width="4" height="24"/>
             <rect x="20" y="60" width="44" height="3"/>
           </svg>
-          <span>Act as a windbreak</span>
+          <span>Acts as a windbreak</span>
         </li>
         <li>
           <svg viewBox="0 0 72 64" aria-hidden="true">
@@ -139,13 +229,7 @@
             <ellipse cx="62" cy="54" rx="7" ry="4.5"/><circle cx="69" cy="51" r="2.5"/>
             <rect x="57" y="57" width="1.5" height="6"/><rect x="65" y="57" width="1.5" height="6"/>
           </svg>
-          <span>Provide shelter</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 72 64" aria-hidden="true">
-            <path d="M36 2c4 10-6 14-6 24 0-6-6-10-8-14-6 10-8 18-8 26 0 14 10 24 22 24s22-10 22-24c0-12-8-20-12-28 0 8-4 12-8 14 4-10 2-18-2-22zm0 34c3 6 10 8 10 16 0 6-4 10-10 10s-10-4-10-10c0-4 2-6 4-8 0 4 2 6 4 6-2-6 0-10 2-14z"/>
-          </svg>
-          <span>Reduce fire risk</span>
+          <span>Provides shelter</span>
         </li>
         <li>
           <svg viewBox="0 0 72 64" aria-hidden="true">
@@ -153,39 +237,111 @@
             <path d="M22 34c-8 2-12 6-12 10 0 7 11.6 12 26 12s26-5 26-12c0-4-4-8-12-10l-1 4c5 1 7 3.5 7 6 0 3.5-8 7-20 7s-20-3.5-20-7c0-2.5 2-5 7-6z"/>
             <path d="M26 42c0 3 4.5 5 10 5s10-2 10-5c-2 1-6 2-10 2s-8-1-10-2z"/>
           </svg>
-          <span>Slow runoff</span>
+          <span>Slows runoff</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 72 64" aria-hidden="true">
+            <circle cx="22" cy="18" r="6"/><circle cx="22" cy="42" r="6"/>
+            <circle cx="10" cy="30" r="6"/><circle cx="34" cy="30" r="6"/>
+            <circle cx="22" cy="30" r="4" fill="#c9a13f"/>
+            <rect x="21" y="44" width="2" height="18"/>
+            <ellipse cx="52" cy="22" rx="10" ry="6"/>
+            <ellipse cx="48" cy="13" rx="5" ry="7" opacity="0.55"/>
+            <ellipse cx="56" cy="13" rx="5" ry="7" opacity="0.55"/>
+            <circle cx="63" cy="21" r="3"/>
+          </svg>
+          <span>Attracts pollinators</span>
         </li>
       </ul>
 
+      <div class="facts">
+        <div class="fact">
+          <figure>
+            <img src="images/powerful-owl.jpg" alt="Two Powerful Owl chicks in a tree hollow">
+            <figcaption>Powerful Owl</figcaption>
+          </figure>
+          <p>Large old trees provide valuable habitat including hollows for native wildlife.</p>
+        </div>
+        <div class="fact">
+          <figure>
+            <img class="square" src="images/corridor-aerial.jpg" alt="Aerial view of farmland with lines of roadside vegetation connecting patches of bush">
+          </figure>
+          <p>Roadside vegetation acts as a corridor, connecting larger habitat patches.</p>
+        </div>
+        <div class="fact">
+          <figure>
+            <img src="images/spiny-riceflower.jpg" alt="Cream flowers of the Spiny Riceflower">
+            <figcaption>Spiny Riceflower</figcaption>
+          </figure>
+          <p>Spiny Riceflower and other threatened flora can be found on roadsides.</p>
+        </div>
+        <div class="fact">
+          <figure>
+            <img src="images/regent-honeyeater.jpg" alt="A black and yellow Regent Honeyeater perched on a branch">
+            <figcaption>Regent Honeyeater</figcaption>
+          </figure>
+        </div>
+      </div>
+
       <blockquote class="quote">
-        Roadsides within Victoria contain 25% of all rare or threatened flora species
-        and communities listed under the <em>Flora and Fauna Guarantee Act</em> 1988.
+        25% of Victoria’s rare or threatened flora species and communities listed under
+        the <abbr title="Flora and Fauna Guarantee Act 1988">FFG Act</abbr> occur on roadsides.
       </blockquote>
+    </div>
+  </section>
 
-      <p class="corridor">Roadside vegetation acts as a corridor, connecting larger habitat patches.</p>
-    </section>
-
-    <section class="actions">
-      <h2>What can you do?</h2>
+  <section class="actions">
+    <div class="wrap">
+      <h2>What can we do?</h2>
       <ol>
         <li>
-          <h3>Maintain fences</h3>
-          <p>Keep livestock off sensitive roadside vegetation</p>
+          <img src="images/fence.jpg" alt="A farm gate and wire fence">
+          <div>
+            <h3>Maintain fences</h3>
+            <p>Keep livestock off sensitive roadside vegetation</p>
+          </div>
         </li>
         <li>
-          <h3>Control weeds</h3>
-          <p>Protect vegetation from weed invasion</p>
+          <img src="images/weeding.jpg" alt="A gloved hand pulling weeds">
+          <div>
+            <h3>Control weeds</h3>
+            <p>Protect vegetation from weed invasion</p>
+          </div>
         </li>
         <li>
-          <h3>Leave fallen timber</h3>
-          <p>Woody debris creates valuable habitat</p>
+          <img src="images/fallen-timber.jpg" alt="A pile of fallen logs in the bush">
+          <div>
+            <h3>Leave fallen timber</h3>
+            <p>Woody debris creates valuable habitat</p>
+          </div>
         </li>
         <li>
-          <h3>Encourage spread</h3>
-          <p>Allow native seedlings to establish in paddocks</p>
+          <img src="images/regeneration.jpg" alt="Young eucalypts regenerating in a paddock">
+          <div>
+            <h3>Encourage natural regeneration</h3>
+            <p>Allow native seedlings to establish in paddocks</p>
+          </div>
         </li>
       </ol>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="history">
+    <div class="wrap">
+      <div>
+        <h2>A note on the history of roadside reserves</h2>
+        <p class="lead">Have you ever wondered why some roadside reserves are much wider than others?</p>
+        <p>In 1620 English clergyman Edmund Gunter introduced the 100 link surveying chain, shown here. This chain was used across England and the British Empire.</p>
+        <p>The width of these road reserves typically varies from one chain (20.1 m) to three chains (60.3 m) depending on their original intended use. For example, stock routes were three chains wide.</p>
+      </div>
+      <img src="images/surveying-chain.jpg" alt="An antique Gunter's surveying chain">
+    </div>
+  </section>
+
+  <section class="join">
+    <h2>Join us</h2>
+    <h2>Become a NERD</h2>
+    <p><a href="tel:+61312345678">(03) 1234 5678</a></p>
+  </section>
 </body>
 </html>
